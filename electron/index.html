@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
+    <meta http-equiv="X-Content-Security-Policy" content="script-src 'self'" />
+    <title>Stopwatch</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        #time {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .lap {
+            font-style: italic;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.3);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div id="time">00:00:00.00</div>
+    <div class="buttons">
+        <button id="start">Start</button>
+        <button id="pause" style="display: none">Pause</button>
+        <button id="lap">Lap</button>
+        <button id="finish">Finish</button>
+        <button id="showlaps">Prev Laps</button>
+    </div>
+    <div class="lap" id="lapsCounter">Laps Recorded: 0</div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <!--h2>Lap Times</h2-->
+            <div id="modalLapTimes">Laps to Copy: 0</div>
+            <button id="copyButton">Copy Lap Times</button>
+        </div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html>
