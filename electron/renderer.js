@@ -1,14 +1,15 @@
 // use preload.js to bridge node modules to this runtime for security
 
-const copyButton = document.getElementById('copyButton');
-const finishButton = document.getElementById('finish');
+const startButton = document.getElementById('start');
 const lapButton = document.getElementById('lap');
+const pauseButton = document.getElementById('pause');
+const finishButton = document.getElementById('finish');
+const copyButton = document.getElementById('copyButton');
 const showLapsButton = document.getElementById('showlaps');
+
 const modalLapTimes = document.getElementById('modalLapTimes');
 const lapsCounter = document.getElementById('lapsCounter');
 const modal = document.getElementById('modal');
-const pauseButton = document.getElementById('pause');
-const startButton = document.getElementById('start');
 const timeDisplay = document.getElementById('time');
 
 let startTime, elapsed = 0, timerInterval, lapTimes = [];

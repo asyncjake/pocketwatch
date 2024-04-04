@@ -1,8 +1,21 @@
+
 const { app, BrowserWindow, session, globalShortcut } = require('electron');
 const path = require('node:path');
 
 function setupWindow() {
   // Shortcuts (global) for hotkeys
+  globalShortcut.register('j', () => {
+    const lapButton = document.getElementById('lap');
+    lapButton.click();
+    console.log('Lap!')
+  })
+  /*
+const startButton = document.getElementById('start');
+const pauseButton = document.getElementById('pause');
+const finishButton = document.getElementById('finish');
+const copyButton = document.getElementById('copyButton');
+const showLapsButton = document.getElementById('showlaps');
+   */
   globalShortcut.register('Alt+CommandOrControl+O', () => {
     showModal();
     console.log('Electron loves global shortcuts!')
