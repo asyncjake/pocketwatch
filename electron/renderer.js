@@ -1,4 +1,10 @@
 // use preload.js to bridge node modules to this runtime for security
+const { ipcRenderer } = require('electron');
+
+ipcRenderer.on('starttimer', (event, arg) => {
+  startTimer();
+});
+
 
 const startButton = document.getElementById('start');
 const lapButton = document.getElementById('lap');

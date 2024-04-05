@@ -1,12 +1,13 @@
-
-const { app, BrowserWindow, session, globalShortcut } = require('electron');
+const { app, BrowserWindow, session, globalShortcut, ipcMain } = require('electron');
 const path = require('node:path');
 
 function setupWindow() {
   // Shortcuts (global) for hotkeys
   globalShortcut.register('j', () => {
-    const lapButton = document.getElementById('lap');
-    lapButton.click();
+    // const lapButton = document.getElementById('lap');
+    // lapButton.click();
+    // Send event to renderer process
+    BrowserWindow.getFocusedWindow().webContents.send('starttimer');
     console.log('Lap!')
   })
   /*
@@ -35,7 +36,8 @@ const showLapsButton = document.getElementById('showlaps');
     height: 269,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      contextIsolation: true
+      contextIsolation: false,
+      nodeIntegration: true
     }
   });
   win.loadFile('index.html');
@@ -54,3 +56,8 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+app.on('will-quit', () => {
+  // Unregister all shortcuts
+  globalShortcut.unregisterAll()
+})
