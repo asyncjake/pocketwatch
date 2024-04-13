@@ -103,10 +103,7 @@ modalCloseBtn.addEventListener('click', () => {
 });
 
 // Listen to preload hooks for msgs from main (global hotkey activation)
-window.pocketwatch.onLapKey(() => {
-    logLap();
-    console.log('rend: lapkey received');
-})
-// window.pocketwatch.onStartKey(startTimer)
+window.pocketwatch.onLapKey(logLap);
+window.pocketwatch.onStartKey(startTimer);
 // window.pocketwatch.onPauseKey(stopTimer)
 // window.pocketwatch.onFinishKey(yourMom)

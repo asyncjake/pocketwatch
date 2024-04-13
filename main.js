@@ -25,10 +25,16 @@ app.whenReady().then(() => {
   win98.loadFile('index.html');
 
   // Register a global shortcut for laps
-  let lapKey = 'MediaNextTrack';
+  let [lapKey, lapSignal] = ['MediaNextTrack', 'lapKey'];
   globalShortcut.register(lapKey, () => {
-    win98.webContents.send('lapKey');
-    console.log(`main: ${lapKey} sent lapKey`);
+    win98.webContents.send(lapSignal);
+    console.log(`main: ${lapKey} sent ${lapSignal}`);
+  });
+  // and a global to start tracking
+  let [startKey, startSignal] = ['MediaPreviousTrack', 'startKey'];
+  globalShortcut.register(startKey, () => {
+    win98.webContents.send(startSignal);
+    console.log(`main: ${startKey} sent ${startSignal}`);
   });
 });
 
