@@ -1,8 +1,6 @@
 const { app, BrowserWindow, session, globalShortcut } = require('electron/main');
 const path = require('node:path');
 
-let appWindow = undefined;
-
 app.whenReady().then(() => {
   // CSP setup
   session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
@@ -14,22 +12,23 @@ app.whenReady().then(() => {
     })
   });
   // Build actual window
-  appWindow = new BrowserWindow({
-    // width: 420, // prod
-    // height: 269, // prod
-    width: 1000, // debug
-    height: 600, // debug
+  const win98 = new BrowserWindow({
+    width: 420, // prod
+    height: 269, // prod
+    // width: 1300, // debug
+    // height: 600, // debug
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true
     }
   });
-  appWindow.loadFile('index.html');
+  win98.loadFile('index.html');
 
-  // Register a global shortcut for the - key
-  globalShortcut.register('-', () => {
-    appWindow.webContents.send('lapKey'),
-    console.log('main: lapkey sent');
+  // Register a global shortcut for laps
+  let lapKey = 'MediaNextTrack';
+  globalShortcut.register(lapKey, () => {
+    win98.webContents.send('lapKey');
+    console.log(`main: ${lapKey} sent lapKey`);
   });
 });
 
