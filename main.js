@@ -11,6 +11,7 @@ app.whenReady().then(() => {
       }
     })
   });
+
   // Build actual window
   const win98 = new BrowserWindow({
     width: 420, // prod

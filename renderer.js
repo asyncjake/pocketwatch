@@ -6,7 +6,6 @@ const startButton = document.getElementById('start');
 const lapButton = document.getElementById('lap');
 const pauseButton = document.getElementById('pause');
 const finishButton = document.getElementById('finish');
-const showLapsButton = document.getElementById('showlaps');
 
 const modal = document.getElementById('modal');
 const modalLapTimes = document.getElementById('modalLapTimes');
@@ -28,7 +27,6 @@ function resetStopwatch() {
     elapsed = 0;
     updateTimeDisplay();
     lapTimes = []
-    lapsCounter.innerHTML = 'Laps recorded: 0';
 }
 
 // core functionality of a stopwatch that doesnt suck
@@ -40,6 +38,8 @@ function startTimer() {
     }, 10);
     startButton.style.display = 'none';
     pauseButton.style.display = 'block';
+    if (lapTimes.length == 0)
+        lapsCounter.innerHTML = 'Ready for laps...';
 }
 function stopTimer() {
     clearInterval(timerInterval);
@@ -49,7 +49,7 @@ function stopTimer() {
 function logLap(optionalSuffix = '') {
     const lapTime = timeDisplay.textContent + optionalSuffix;
     lapTimes.push(lapTime);
-    lapsCounter.innerHTML = `Laps Recorded: ${lapTimes.length}`;
+    lapsCounter.innerHTML = `<p>${lapTimes.join('<br />')}</p>`;
 }
 function finishTiming() {
     if (!lapTimes || lapTimes.length < 1) return;
@@ -88,12 +88,6 @@ lapButton.addEventListener('click', () => {
 });
 finishButton.addEventListener('click', () => {
     finishTiming();
-});
-showLapsButton.addEventListener('click', () => {
-    if (lapTimes.length > 0)
-        showLapCopyPrompt();
-    else
-        alert('No previous laps exist!');
 });
 modalLapCopyBtn.addEventListener('click', () => {
     copyLapTimes();
