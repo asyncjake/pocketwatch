@@ -8,12 +8,11 @@ makerList.push({
   name: '@electron-forge/maker-squirrel',
   config: {},
 });
-/*  // Generic zipper, read the docs before using
+// Generic zipper, read the docs before using
 makerList.push({
   name: '@electron-forge/maker-zip',
   platforms: ['darwin'],
 });
-*/
 /*  // lil debbie
 makerList.push({
   name: '@electron-forge/maker-deb',
