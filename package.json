@@ -6,7 +6,6 @@
   "description": "A simple stopwatch with laps and the ability to copy times (or get them from the console) - with hardwired global shortcuts, allowing for Streamdeck integration",
   "main": "main.js",
   "scripts": {
-    "setup": "npm i",
     "start": "electron .",
     "forge": "electron-forge start",
     "interactive": "electron . -i",
