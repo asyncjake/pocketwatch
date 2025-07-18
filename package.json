@@ -23,7 +23,7 @@
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron/fuses": "^1.8.0",
     "debug": "^4.3.4",
-    "electron": "^29.1.4"
+    "electron": "^29.3.3"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0"
